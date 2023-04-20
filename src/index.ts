@@ -41,8 +41,13 @@ app.get(
     res.status(200).send({ success: true, query: req.query });
   }
 );
+
 app.get("/close", (req: Request, res: Response) => {
   res.send("<script>window.close()</script>");
+});
+
+app.get("/update", (req: Request, res: Response) => {
+  res.status(200).send({ token: req.headers.authorization });
 });
 
 app.get(

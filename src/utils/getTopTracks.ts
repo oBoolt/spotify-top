@@ -66,6 +66,8 @@ export default async function getTopTracks(
         await users.push(currentUser);
         jsonFile.saveJSON(join(process.cwd(), "users.json"), users);
         currentUser = users.find((e) => e.id === user_id);
+
+        return config;
       }
 
       counter++;
@@ -89,6 +91,9 @@ export default async function getTopTracks(
     medium_term: "Medium Term (6 Months)",
     long_term: "Long Term (All Time)",
   };
+
+  // Test token
+  await api.get(`http://localhost:${process.env.PORT}/update`);
 
   // Top Tracks
   let topTracksList = [];
